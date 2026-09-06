@@ -17,7 +17,7 @@ export default function Hero() {
             <span className="text-[10px] tracking-[0.2em] font-bold text-[#374151] mb-6 block uppercase">
               AI/ML Engineer · Full-stack Developer · SDE · RPA Developer
             </span>
-            <h1 className="text-5xl md:text-6xl font-bold tracking-tighter leading-[0.9] mb-8 text-[#0B1220]">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter leading-[0.95] sm:leading-[0.9] mb-8 text-[#0B1220]">
               BUILDING SCALABLE
               <br />
               <span className="inline-block bg-[#E07A5F] text-white px-3 py-1 mt-2">
@@ -47,23 +47,23 @@ export default function Hero() {
               </div>
             </div>
             <div className="grid grid-cols-3 border border-[#0B1220] bg-white/50 backdrop-blur-sm shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)]">
-              <div className="px-6 py-4 border-r border-[#0B1220]">
-                <div className="text-2xl font-bold">10+</div>
-                <div className="text-[9px] tracking-widest text-[#374151] mt-1 font-bold">
+              <div className="px-3 sm:px-6 py-3 sm:py-4 border-r border-[#0B1220]">
+                <div className="text-xl sm:text-2xl font-bold">10+</div>
+                <div className="text-[8px] sm:text-[9px] tracking-widest text-[#374151] mt-1 font-bold">
                   <span className="inline-block w-1.5 h-1.5 bg-[#4ADE80] mr-2" />
                   PROJECTS
                 </div>
               </div>
-              <div className="px-6 py-4 border-r border-[#0B1220]">
-                <div className="text-2xl font-bold">3</div>
-                <div className="text-[9px] tracking-widest text-[#374151] mt-1 font-bold">
+              <div className="px-3 sm:px-6 py-3 sm:py-4 border-r border-[#0B1220]">
+                <div className="text-xl sm:text-2xl font-bold">3</div>
+                <div className="text-[8px] sm:text-[9px] tracking-widest text-[#374151] mt-1 font-bold">
                   <span className="inline-block w-1.5 h-1.5 bg-[#60A5FA] mr-2" />
                   INTERNSHIPS
                 </div>
               </div>
-              <div className="px-6 py-4">
-                <div className="text-2xl font-bold">8.52</div>
-                <div className="text-[9px] tracking-widest text-[#374151] mt-1 font-bold">
+              <div className="px-3 sm:px-6 py-3 sm:py-4">
+                <div className="text-xl sm:text-2xl font-bold">8.52</div>
+                <div className="text-[8px] sm:text-[9px] tracking-widest text-[#374151] mt-1 font-bold">
                   <span className="inline-block w-1.5 h-1.5 bg-[#FCD34D] mr-2" />
                   CGPA
                 </div>

@@ -111,7 +111,7 @@ export default function Projects() {
                     />
                     {/* oversized index numeral */}
                     <span
-                      className="absolute -bottom-6 -right-3 text-[130px] sm:text-[160px] font-black leading-none select-none pointer-events-none"
+                      className="absolute -bottom-4 -right-2 sm:-bottom-6 sm:-right-3 text-[72px] sm:text-[130px] lg:text-[160px] font-black leading-none select-none pointer-events-none"
                       style={{ color: project.tagColor, opacity: 0.4 }}
                     >
                       {number}

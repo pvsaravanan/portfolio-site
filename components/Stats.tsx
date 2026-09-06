@@ -155,7 +155,7 @@ export default function Stats() {
 
         <div className="grid grid-cols-1 gap-8">
           {/* Interactive GitHub Calendar */}
-          <div className="border-2 border-[#0B1220] bg-[var(--paper)] p-8 shadow-[var(--sh-2)] relative group hover:shadow-[var(--sh-hover)] transition-all duration-150">
+          <div className="border-2 border-[#0B1220] bg-[var(--paper)] p-5 sm:p-6 lg:p-8 shadow-[var(--sh-2)] relative group hover:shadow-[var(--sh-hover)] transition-all duration-150">
             <span className="absolute top-1.5 left-1.5 w-1.5 h-1.5 bg-[var(--ink)] opacity-20" />
             <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-[var(--ink)] opacity-20" />
             <span className="absolute bottom-1.5 left-1.5 w-1.5 h-1.5 bg-[var(--ink)] opacity-20" />
@@ -183,27 +183,27 @@ export default function Stats() {
             </div>
 
             {/* Tab Toggle */}
-            <div className="inline-flex items-center gap-1 bg-[var(--paper-2)] border border-[var(--rule)] rounded-full p-1 mb-8">
+            <div className="flex sm:inline-flex items-center gap-1 bg-[var(--paper-2)] border border-[var(--rule)] rounded-full p-1 mb-8 w-full sm:w-auto">
               <button
                 onClick={() => setActiveTab('contributions')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full text-[11px] font-bold transition-all duration-150 ${
+                className={`flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 sm:px-4 py-2 rounded-full text-[10px] sm:text-[11px] font-bold whitespace-nowrap transition-all duration-150 ${
                   activeTab === 'contributions'
                     ? 'bg-white text-[#0B1220] shadow-sm'
                     : 'text-[var(--ink-4)] hover:text-[#0B1220]'
                 }`}
               >
-                <FaChartLine className="w-3.5 h-3.5" />
+                <FaChartLine className="w-3.5 h-3.5 shrink-0" />
                 Contributions
               </button>
               <button
                 onClick={() => setActiveTab('merges')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full text-[11px] font-bold transition-all duration-150 ${
+                className={`flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 sm:px-4 py-2 rounded-full text-[10px] sm:text-[11px] font-bold whitespace-nowrap transition-all duration-150 ${
                   activeTab === 'merges'
                     ? 'bg-white text-[#0B1220] shadow-sm'
                     : 'text-[var(--ink-4)] hover:text-[#0B1220]'
                 }`}
               >
-                <FaCodeMerge className="w-3.5 h-3.5" />
+                <FaCodeMerge className="w-3.5 h-3.5 shrink-0" />
                 Recent Merges
               </button>
             </div>
@@ -333,7 +333,7 @@ export default function Stats() {
           </div>
 
           {/* LeetCode Stats */}
-          <div className="border-2 border-[#0B1220] bg-[var(--paper)] p-8 shadow-[var(--sh-2)] relative group hover:shadow-[var(--sh-hover)] transition-all duration-150">
+          <div className="border-2 border-[#0B1220] bg-[var(--paper)] p-5 sm:p-6 lg:p-8 shadow-[var(--sh-2)] relative group hover:shadow-[var(--sh-hover)] transition-all duration-150">
             <span className="absolute top-1.5 left-1.5 w-1.5 h-1.5 bg-[var(--ink)] opacity-20" />
             <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-[var(--ink)] opacity-20" />
             <span className="absolute bottom-1.5 left-1.5 w-1.5 h-1.5 bg-[var(--ink)] opacity-20" />

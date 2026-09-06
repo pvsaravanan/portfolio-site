@@ -161,11 +161,11 @@ export default function Experience() {
                     </span>
 
                     <div className="flex flex-col mb-3">
-                      <div className="flex justify-between items-start mb-1">
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 mb-1">
                         <h3 className="text-lg font-bold leading-tight uppercase tracking-tight">
                           {exp.role}
                         </h3>
-                        <div className="text-right">
+                        <div className="text-left sm:text-right shrink-0">
                           <span className="text-[10px] tracking-tight text-[var(--ink-3)] font-medium block">
                             {exp.period}
                           </span>
