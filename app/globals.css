@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+@layer base {
+  :root {
+    --background: 41 32% 94%;
+    --foreground: 0 0% 10%;
+    --card: 41 32% 94%;
+    --card-foreground: 0 0% 10%;
+    --popover: 41 32% 94%;
+    --popover-foreground: 0 0% 10%;
+    --primary: 0 0% 10%;
+    --primary-foreground: 41 32% 94%;
+    --secondary: 39 27% 89%;
+    --secondary-foreground: 0 0% 10%;
+    --muted: 39 27% 89%;
+    --muted-foreground: 0 0% 43%;
+    --accent-foreground: 41 32% 94%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 41 32% 94%;
+    --border: 42 25% 77%;
+    --input: 42 25% 77%;
+    --ring: 0 0% 10%;
+    --radius: 0;
+    
+    --paper: #f4f1ea;
+    --paper-2: #ece7db;
+    --paper-3: #e2dccb;
+    --ink: #1a1a1a;
+    --ink-2: #3a3a3a;
+    --ink-3: #6e6e6e;
+    --ink-4: #9c9790;
+    --rule: #cfc8b7;
+    --rule-strong: #1a1a1a;
+    
+    --c-events: #6aa86e;
+    --c-careers: #7aa8cd;
+    --c-bounties: #d88060;
+    --c-community: #a795c8;
+    --c-programs: #d9a85a;
+    --accent: #d88060;
+    --accent-strong: #c56442;
+    
+    --mono: "Roboto Mono", "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    
+    --sh-1: 2px 2px 0 rgba(26,26,26,0.9);
+    --sh-2: 3px 3px 0 rgba(26,26,26,0.85);
+    --sh-3: 4px 4px 0 rgba(26,26,26,0.8);
+    --sh-hover: 5px 5px 0 rgba(26,26,26,0.85);
+  }
+}
+
+:root {
+  --radius: 0px;
+}
+
+body {
+  font-family: 'Roboto Mono', 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  background-color: #F4F1EA;
+  color: #0B1220;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: #0B1220;
+  color: #F5F1E8;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
