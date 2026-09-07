@@ -67,7 +67,7 @@ export default function Projects() {
           }
         />
 
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-4">
           {projects.map((project, idx) => {
             const reversed = idx % 2 === 1;
             const number = project.id.split('-')[1];
@@ -131,8 +131,8 @@ export default function Projects() {
                   </div>
 
                   {/* Details Panel */}
-                  <div className="w-full lg:w-1/2 flex flex-col justify-center p-6 sm:p-8 lg:p-10">
-                    <div className="flex items-center gap-2 mb-3">
+                  <div className="w-full lg:w-1/2 flex flex-col justify-center p-5 sm:p-6 lg:p-8">
+                    <div className="flex items-center gap-2 mb-2">
                       <span className="text-[10px] font-bold tracking-widest text-[var(--ink-4)]">{project.id}</span>
                       <span className="w-1 h-1 bg-[var(--ink-4)]" />
                       <span className="text-[10px] font-bold tracking-widest text-[#E07A5F] uppercase">
@@ -140,15 +140,15 @@ export default function Projects() {
                       </span>
                     </div>
 
-                    <h3 className="text-2xl sm:text-3xl font-extrabold uppercase tracking-tight leading-[1.05] text-[#0B1220] mb-4">
+                    <h3 className="text-2xl sm:text-3xl font-extrabold uppercase tracking-tight leading-[1.05] text-[#0B1220] mb-3">
                       {project.title}
                     </h3>
 
-                    <p className="text-[13px] text-[#374151] leading-relaxed mb-6 max-w-md">
+                    <p className="text-[13px] text-[#374151] leading-snug mb-4 max-w-md">
                       {project.desc}
                     </p>
 
-                    <div className="flex flex-wrap gap-2 mb-8">
+                    <div className="flex flex-wrap gap-2 mb-5">
                       {project.tags.map((tag) => (
                         <span
                           key={tag}
@@ -159,7 +159,7 @@ export default function Projects() {
                       ))}
                     </div>
 
-                    <div className="flex items-center justify-between pt-4 border-t border-dashed border-[#cbd5e1]">
+                    <div className="flex items-center justify-between pt-3 border-t border-dashed border-[#cbd5e1]">
                       <span className="text-[9px] tracking-widest text-[#374151] font-bold uppercase">
                         BY {project.author}
                       </span>
