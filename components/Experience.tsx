@@ -7,11 +7,17 @@ import SectionHeader from './SectionHeader';
 const experiences = [
   {
     company: 'ServiceNow',
-    role: 'Associate Software Intern',
-    period: 'Aug 2026 — Feb 2027 (Incoming)',
-    location: 'Remote/Office',
-    description: 'Successfully recruited for the Associate Software Intern role at ServiceNow. Preparing to contribute to enterprise-level software engineering projects.',
-    tags: ['SOFTWARE ENGINEERING', 'ENTERPRISE SOFTWARE', 'INTERNSHIP'],
+    role: 'Associate Software Engineer Intern',
+    period: 'Aug 2026 — Present',
+    location: 'Office',
+    description: [
+      'Designing a QR-based mobile authentication feature enabling instant desktop login through secure desktop-to-mobile session handoff.',
+      'Architecting time-bound secret validation and rate limiting to strengthen authentication security and prevent replay or abuse scenarios.',
+      'Conducting technical analysis of the existing Trusted Device feature to identify reusable components and define new platform capabilities required for the authentication flow.',
+      'Hands-on with OAuth 2.0, pre-authentication policies, API security, GlideRecord, and the ServiceNow platform.',
+    ],
+    tags: ['QR Session Mirroring', 'Clock-Skew Validation',  
+'Session ID Binding', 'Pre-Auth Integration', 'Rate Limiting Strategy'],
     color: '#d88060',
     id: 'EXP-04',
   },
@@ -19,9 +25,9 @@ const experiences = [
     company: 'DeadEnd Engineers',
     role: 'Founding Member & Developer',
     period: 'Jan 2026 — Present',
-    location: 'Remote',
+    location: '',
     description: 'Co-founded a developer community focused on building experimental software projects and collaborative tools.',
-    tags: ['COMMUNITY BUILDING', 'EXPERIMENTAL SOFTWARE', 'LEADERSHIP'],
+    tags: ['DEVELOPER COMMUNITY', 'OPEN SOURCE', 'COLLABORATIVE ENGINEERING', 'EXPERIMENTAL SOFTWARE'],
     color: '#d88060',
     id: 'EXP-03',
   },
@@ -30,8 +36,13 @@ const experiences = [
     role: 'Cybersecurity Intern',
     period: 'Jan 2025 — Feb 2025',
     location: 'Chennai, India',
-    description: 'Developed security protocols for systems and networks, monitored network traffic for threats, conducted vulnerability assessments and penetration testing, and supported firewalls and IDS systems.',
-    tags: ['CYBERSECURITY', 'NETWORK SECURITY', 'VULNERABILITY ASSESSMENT', 'IDS'],
+    description: [
+      'Worked on network and application security, focusing on identifying and mitigating potential security risks.',
+      'Performed vulnerability assessments, penetration testing, and network traffic analysis.',
+      'Gained hands-on experience with firewalls, IDS, security protocols, and threat detection.',
+      'Evaluated system security and identified potential vulnerabilities and attack vectors.',
+    ],
+    tags: ['CYBERSECURITY', 'NETWORK SECURITY', 'PENETRATION TESTING', 'THREAT DETECTION'],
     color: '#d88060',
     id: 'EXP-02',
   },
@@ -40,8 +51,12 @@ const experiences = [
     role: 'Full-stack Developer Intern',
     period: 'Jul 2024 — Aug 2024',
     location: 'Chennai, India',
-    description: 'Built responsive web applications using HTML, CSS, JavaScript, and React. Developed REST APIs with Node.js and Express, integrated third-party services via JSON, and designed robust database systems.',
-    tags: ['REACT', 'NODE.JS', 'EXPRESS', 'REST APIS', 'DATABASE DESIGN'],
+    description: [
+      'Built TeamOrigin, a platform connecting founders with technical contributors to form project teams.',
+      'Developed the full-stack application using React, Node.js, Express, and MySQL.',
+      'Implemented JWT authentication and REST APIs for secure user access and frontend-backend communication.',
+    ],
+    tags: ['REACT', 'NODE.JS', 'REST APIs', 'JWT AUTHENTICATION', 'MYSQL'],
     color: '#d88060',
     id: 'EXP-01',
   },
@@ -179,29 +194,40 @@ export default function Experience() {
                       </p>
                     </div>
                     
-                    <p className="text-[11px] text-[var(--ink-3)] leading-relaxed mb-6">
-                      {exp.description}
-                      {exp.company === 'DeadEnd Engineers' && (
-                        <span className="block mt-2">
-                          <a 
-                            href="https://codebynj.github.io/deadend.github.io/" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="text-[var(--accent)] underline decoration-1 underline-offset-4 mr-3"
-                          >
-                            Website
-                          </a>
-                          <a 
-                            href="https://www.notion.so/DeadEnd-Engineers-3139801ed37b80e1ac97e8c1ccabe0d0" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="text-[var(--accent)] underline decoration-1 underline-offset-4"
-                          >
-                            Notion Workspace
-                          </a>
-                        </span>
-                      )}
-                    </p>
+                    {Array.isArray(exp.description) ? (
+                      <ul className="space-y-2 mb-6">
+                        {exp.description.map((point) => (
+                          <li key={point} className="flex gap-2.5 text-[11px] text-[var(--ink-3)] leading-relaxed">
+                            <span className="mt-[5px] w-1 h-1 shrink-0 bg-[var(--accent)]" aria-hidden="true" />
+                            <span>{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-[11px] text-[var(--ink-3)] leading-relaxed mb-6">
+                        {exp.description}
+                        {exp.company === 'DeadEnd Engineers' && (
+                          <span className="block mt-2">
+                            <a
+                              href="https://www.deadendengineers.co.in"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-[var(--accent)] underline decoration-1 underline-offset-4 mr-3"
+                            >
+                              Website
+                            </a>
+                            <a
+                              href="https://www.notion.so/DeadEnd-Engineers-3139801ed37b80e1ac97e8c1ccabe0d0"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-[var(--accent)] underline decoration-1 underline-offset-4"
+                            >
+                              Notion Workspace
+                            </a>
+                          </span>
+                        )}
+                      </p>
+                    )}
 
                     <div className="flex flex-wrap gap-2">
                       {exp.tags.map(tag => (
