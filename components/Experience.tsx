@@ -119,7 +119,7 @@ export default function Experience() {
 
   return (
     <section id="experience" className="border-b border-[var(--ink)] bg-[var(--paper)]">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <SectionHeader index="03" label="EXPERIENCE" title="WORK &" muted="INTERNSHIPS" ink="light" />
 
         <div className="relative" ref={timelineRef}>
@@ -130,7 +130,7 @@ export default function Experience() {
             className="absolute left-[7px] top-0 bottom-0 w-[2px] bg-[var(--ink)] z-[5] md:left-1/2 md:-ml-[1px]" 
           />
 
-          <div className="space-y-12">
+          <div className="space-y-6">
             {experiences.map((exp, index) => (
               <div 
                 key={exp.id} 
@@ -168,14 +168,14 @@ export default function Experience() {
                       y: -5,
                       transition: { duration: 0.2 },
                     }}
-                    className="border border-[var(--ink)] p-5 hover:bg-[var(--paper-2)] transition-colors group relative cursor-default"
+                    className="border border-[var(--ink)] p-4 hover:bg-[var(--paper-2)] transition-colors group relative cursor-default"
                   >
                     {/* ID Tag */}
                     <span className="absolute -top-3 right-4 px-2 py-0.5 bg-[var(--ink)] text-[var(--paper)] text-[9px] tracking-widest font-bold">
                       {exp.id}
                     </span>
 
-                    <div className="flex flex-col mb-3">
+                    <div className="flex flex-col mb-2">
                       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 mb-1">
                         <h3 className="text-lg font-bold leading-tight uppercase tracking-tight">
                           {exp.role}
@@ -189,22 +189,22 @@ export default function Experience() {
                           </span>
                         </div>
                       </div>
-                      <p className="text-sm font-bold text-[var(--accent)] mb-2 uppercase tracking-wide">
+                      <p className="text-sm font-bold text-[var(--accent)] mb-1 uppercase tracking-wide">
                         {exp.company}
                       </p>
                     </div>
                     
                     {Array.isArray(exp.description) ? (
-                      <ul className="space-y-2 mb-6">
+                      <ul className="space-y-1 mb-4">
                         {exp.description.map((point) => (
-                          <li key={point} className="flex gap-2.5 text-[11px] text-[var(--ink-3)] leading-relaxed">
+                          <li key={point} className="flex gap-2.5 text-[11px] text-[var(--ink-3)] leading-snug">
                             <span className="mt-[5px] w-1 h-1 shrink-0 bg-[var(--accent)]" aria-hidden="true" />
                             <span>{point}</span>
                           </li>
                         ))}
                       </ul>
                     ) : (
-                      <p className="text-[11px] text-[var(--ink-3)] leading-relaxed mb-6">
+                      <p className="text-[11px] text-[var(--ink-3)] leading-snug mb-4">
                         {exp.description}
                         {exp.company === 'DeadEnd Engineers' && (
                           <span className="block mt-2">
