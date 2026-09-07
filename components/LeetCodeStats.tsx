@@ -47,14 +47,33 @@ function buildActivities(calendar: Record<string, number>) {
   return activities;
 }
 
-const CALENDAR_THEME = {
-  light: ['#EBE7DE', '#FDE68A', '#FCD34D', '#F59E0B', '#B45309'],
-  dark: ['#EBE7DE', '#FDE68A', '#FCD34D', '#F59E0B', '#B45309'],
+const HEATMAP_THEMES = {
+  green: {
+    label: 'Green',
+    colors: ['#EBE7DE', '#9be9a8', '#40c463', '#30a14e', '#216e39'],
+    preview: '#40c463',
+  },
+  amber: {
+    label: 'Amber',
+    colors: ['#EBE7DE', '#FDE68A', '#FCD34D', '#F59E0B', '#B45309'],
+    preview: '#F59E0B',
+  },
+  blue: {
+    label: 'Electric',
+    colors: ['#EBE7DE', '#93c5fd', '#60a5fa', '#3b82f6', '#1d4ed8'],
+    preview: '#3b82f6',
+  },
+  purple: {
+    label: 'Royal',
+    colors: ['#EBE7DE', '#d8b4fe', '#a855f7', '#9333ea', '#6b21a8'],
+    preview: '#a855f7',
+  },
 };
 
 export default function LeetCodeStats() {
   const [data, setData] = useState<LeetCodeData | null>(null);
   const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading');
+  const [selectedTheme, setSelectedTheme] = useState<keyof typeof HEATMAP_THEMES>('green');
 
   useEffect(() => {
     let cancelled = false;
@@ -83,7 +102,13 @@ export default function LeetCodeStats() {
         { label: 'Hard', count: data.hardSolved, color: '#E07A5F' },
       ]
     : [];
-  const maxDifficultyCount = Math.max(1, ...difficultyBars.map((d) => d.count));
+  const totalDifficultyCount = Math.max(1, difficultyBars.reduce((sum, d) => sum + d.count, 0));
+
+  const activeHeatmapTheme = HEATMAP_THEMES[selectedTheme];
+  const heatmapTheme = {
+    light: activeHeatmapTheme.colors,
+    dark: activeHeatmapTheme.colors,
+  };
 
   if (status === 'error') {
     return (
@@ -139,26 +164,29 @@ export default function LeetCodeStats() {
 
       {/* Difficulty Breakdown */}
       <div>
-        <div className="flex items-center gap-2 mb-4">
+        <div className="flex items-center gap-2 mb-3">
           <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--ink-4)]">Difficulty Breakdown</span>
           <div className="h-[1px] flex-grow bg-[var(--rule)] opacity-50" />
         </div>
-        <div className="flex flex-col gap-3">
+        <div className="flex h-3 border border-[#0B1220] overflow-hidden">
           {difficultyBars.map((bar) => (
-            <div key={bar.label} className="flex items-center gap-3">
-              <span className="w-14 text-[10px] font-bold uppercase tracking-widest text-[#0B1220] shrink-0">
-                {bar.label}
-              </span>
-              <div className="flex-1 h-3 border border-[#0B1220] bg-white overflow-hidden">
-                <div
-                  className="h-full transition-all duration-500"
-                  style={{
-                    width: `${(bar.count / maxDifficultyCount) * 100}%`,
-                    backgroundColor: bar.color,
-                  }}
-                />
-              </div>
-              <span className="w-8 text-right text-[11px] font-bold text-[#0B1220] shrink-0">{bar.count}</span>
+            <div
+              key={bar.label}
+              className="h-full border-r border-white last:border-r-0 transition-all duration-500"
+              style={{
+                width: `${(bar.count / totalDifficultyCount) * 100}%`,
+                backgroundColor: bar.color,
+              }}
+              title={`${bar.label}: ${bar.count}`}
+            />
+          ))}
+        </div>
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mt-3">
+          {difficultyBars.map((bar) => (
+            <div key={bar.label} className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#0B1220]">
+              <span className="w-2 h-2 shrink-0" style={{ backgroundColor: bar.color }} />
+              {bar.label}
+              <span className="text-[var(--ink-4)]">{bar.count}</span>
             </div>
           ))}
         </div>
@@ -166,14 +194,38 @@ export default function LeetCodeStats() {
 
       {/* Submission Heatmap */}
       <div>
-        <div className="flex items-center gap-2 mb-4">
-          <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--ink-4)]">Submission Heatmap (Last 52 Weeks)</span>
-          <div className="h-[1px] flex-grow bg-[var(--rule)] opacity-50" />
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-4">
+          <div className="flex items-center gap-2 flex-1 min-w-0">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--ink-4)] whitespace-nowrap">Submission Heatmap (Last 52 Weeks)</span>
+            <div className="h-[1px] flex-grow bg-[var(--rule)] opacity-50" />
+          </div>
+          <div className="flex flex-col gap-2 shrink-0">
+            <span className="text-[9px] font-bold uppercase tracking-widest text-[var(--ink-4)]">Theme Style</span>
+            <div className="flex gap-2.5 h-[26px] items-center">
+              {Object.entries(HEATMAP_THEMES).map(([key, theme]) => (
+                <button
+                  key={key}
+                  onClick={() => setSelectedTheme(key as keyof typeof HEATMAP_THEMES)}
+                  title={theme.label}
+                  className={`relative w-5 h-5 border-[1.5px] transition-all duration-150 ${
+                    selectedTheme === key
+                      ? 'border-[#0B1220] scale-110'
+                      : 'border-[var(--rule)] hover:border-[#0B1220]'
+                  }`}
+                  style={{ backgroundColor: theme.preview }}
+                >
+                  {selectedTheme === key && (
+                    <span className="absolute -top-1 -right-1 w-2 h-2 bg-[#0B1220]" />
+                  )}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
         <div className="w-full flex justify-center py-4 bg-white/30 border border-[var(--rule)] rounded-sm px-4 [&_svg]:w-full [&_svg]:h-auto [&_svg]:max-w-none">
           <ActivityCalendar
             data={activities}
-            theme={CALENDAR_THEME}
+            theme={heatmapTheme}
             colorScheme="light"
             fontSize={13}
             blockSize={14}
