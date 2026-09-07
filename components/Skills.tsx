@@ -3,8 +3,21 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import type { IconType } from 'react-icons';
-import { FaAws } from 'react-icons/fa6';
 import {
+  FaAws,
+  FaCodeBranch,
+  FaComments,
+  FaDatabase,
+  FaDiagramProject,
+  FaEye,
+  FaJava,
+  FaNetworkWired,
+  FaRobot,
+  FaUserSecret,
+  FaWandMagicSparkles,
+} from 'react-icons/fa6';
+import {
+  SiC,
   SiPython,
   SiTypescript,
   SiJavascript,
@@ -36,12 +49,14 @@ interface SkillMeta {
   color?: string;
 }
 
-// Real brand icon + color for recognizable skills. Anything missing here renders as plain text,
-// same as the reference design (e.g. "LLMs", "Prompt Engineering" have no logo either).
+// Real brand icons are used where available; domain icons represent conceptual skills.
 const SKILL_META: Record<string, SkillMeta> = {
   'Python': { icon: SiPython, color: '#3776AB' },
   'TypeScript': { icon: SiTypescript, color: '#3178C6' },
   'JavaScript': { icon: SiJavascript, color: '#F7DF1E' },
+  'Java': { icon: FaJava, color: '#E76F00' },
+  'C': { icon: SiC, color: '#A8B9CC' },
+  'SQL': { icon: FaDatabase, color: '#336791' },
   'React': { icon: SiReact, color: '#61DAFB' },
   'Next.js': { icon: SiNextdotjs, color: '#000000' },
   'Tailwind CSS': { icon: SiTailwindcss, color: '#38BDF8' },
@@ -56,19 +71,27 @@ const SKILL_META: Record<string, SkillMeta> = {
   'Docker': { icon: SiDocker, color: '#2496ED' },
   'Kubernetes': { icon: SiKubernetes, color: '#326CE5' },
   'Linux': { icon: SiLinux, color: '#111111' },
+  'CI/CD': { icon: FaCodeBranch, color: '#0B1220' },
   'Git': { icon: SiGit, color: '#F05033' },
   'GitHub': { icon: SiGithub, color: '#181717' },
   'PyTorch': { icon: SiPytorch, color: '#EE4C2C' },
   'TensorFlow': { icon: SiTensorflow, color: '#FF6F00' },
   'Scikit-learn': { icon: SiScikitlearn, color: '#F7931E' },
   'LangChain': { icon: SiLangchain, color: '#1C3C3C' },
+  'LLMs': { icon: FaRobot, color: '#0B1220' },
+  'RAG Pipelines': { icon: FaDiagramProject, color: '#7C3AED' },
+  'Prompt Engineering': { icon: FaWandMagicSparkles, color: '#D97706' },
+  'NLP': { icon: FaComments, color: '#2563EB' },
+  'Computer Vision': { icon: FaEye, color: '#0891B2' },
   'UiPath': { icon: SiUipath, color: '#FA4616' },
+  'Ethical Hacking': { icon: FaUserSecret, color: '#B91C1C' },
+  'Network Security': { icon: FaNetworkWired, color: '#15803D' },
 };
 
 const skillGroups = [
   {
     title: 'Languages',
-    skills: ['Python', 'TypeScript', 'JavaScript', 'SQL'],
+    skills: ['Python', 'TypeScript', 'JavaScript', 'Java', 'C', 'SQL'],
   },
   {
     title: 'Backend',
