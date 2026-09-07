@@ -34,7 +34,7 @@ type GitHubTab = 'contributions' | 'merges';
 
 export default function Stats() {
   const [selectedYear, setSelectedYear] = useState(2026);
-  const [selectedTheme, setSelectedTheme] = useState('orange');
+  const [selectedTheme, setSelectedTheme] = useState('green');
   const [mounted, setMounted] = useState(false);
   const [yearStats, setYearStats] = useState<YearStats>(EMPTY_STATS);
   const [activeTab, setActiveTab] = useState<GitHubTab>('contributions');
