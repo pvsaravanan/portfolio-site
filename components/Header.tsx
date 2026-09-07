@@ -5,7 +5,6 @@ import Button from './Button';
 
 const navItems = [
   { label: 'HOME', href: '#home' },
-  { label: 'ABOUT', href: '#about' },
   { label: 'EDUCATION', href: '#education' },
   { label: 'SKILLS', href: '#skills' },
   { label: 'EXPERIENCE', href: '#experience' },

@@ -56,7 +56,7 @@ export default function Projects() {
     <section id="projects" className="border-b border-[#0B1220]">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <SectionHeader
-          index="05"
+          index="04"
           label="WORKS"
           title="PROJECTS &"
           muted="CONTRIBUTIONS"

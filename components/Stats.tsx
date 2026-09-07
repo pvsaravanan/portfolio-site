@@ -151,7 +151,7 @@ export default function Stats() {
   return (
     <section id="stats" className="border-b border-[#0B1220] bg-[var(--paper-2)]">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <SectionHeader index="07" label="ACTIVITY" title="CODING" muted="ACTIVITY" />
+        <SectionHeader index="06" label="ACTIVITY" title="CODING" muted="ACTIVITY" />
 
         <div className="grid grid-cols-1 gap-8">
           {/* Interactive GitHub Calendar */}

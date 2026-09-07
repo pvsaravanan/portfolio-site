@@ -36,7 +36,7 @@ export default function Education() {
   return (
     <section id="education" className="border-b border-[var(--ink)] bg-[var(--paper-2)]">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <SectionHeader index="02" label="EDUCATION" title="ACADEMIC" muted="BACKGROUND" ink="light" />
+        <SectionHeader index="01" label="EDUCATION" title="ACADEMIC" muted="BACKGROUND" ink="light" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {education.map((edu) => (

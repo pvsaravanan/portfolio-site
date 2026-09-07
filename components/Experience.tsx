@@ -120,7 +120,7 @@ export default function Experience() {
   return (
     <section id="experience" className="border-b border-[var(--ink)] bg-[var(--paper)]">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <SectionHeader index="04" label="EXPERIENCE" title="WORK &" muted="INTERNSHIPS" ink="light" />
+        <SectionHeader index="03" label="EXPERIENCE" title="WORK &" muted="INTERNSHIPS" ink="light" />
 
         <div className="relative" ref={timelineRef}>
           {/* Vertical Timeline Line */}

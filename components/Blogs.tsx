@@ -34,7 +34,7 @@ export default function Blogs() {
     <section id="blogs" className="border-b border-[var(--ink)] bg-[var(--paper)]">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <SectionHeader
-          index="06"
+          index="05"
           label="BLOGS"
           title="LATEST"
           muted="INSIGHTS"

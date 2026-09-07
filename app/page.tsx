@@ -10,7 +10,6 @@ import Experience from '@/components/Experience';
 import Education from '@/components/Education';
 import Blogs from '@/components/Blogs';
 import Stats from '@/components/Stats';
-import About from '@/components/About';
 import Skills from '@/components/Skills';
 import Footer from '@/components/Footer';
 import LoadingScreen from '@/components/LoadingScreen';
@@ -36,7 +35,6 @@ export default function Home() {
           <Header />
           <Hero />
           <LiveFeed />
-          <About />
           <Education />
           <TechCarousel />
           <Skills />

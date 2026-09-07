@@ -159,7 +159,7 @@ export default function Skills() {
   return (
     <section id="skills" className="border-b border-[#0B1220] bg-[var(--paper-2)]">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        <SectionHeader index="03" label="SKILLS" title="TECHNICAL" muted="ARSENAL" />
+        <SectionHeader index="02" label="SKILLS" title="TECHNICAL" muted="ARSENAL" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
           <div className="flex flex-col gap-10">
