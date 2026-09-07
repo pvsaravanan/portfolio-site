@@ -11,7 +11,7 @@ const education = [
     location: 'Chennai, India',
     details: [
       'Focusing on Software Engineering, Data Structures, and Algorithms.',
-      'Active member of the Coding Club and Cybersecurity research group.',
+      'Applying academic concepts to build real-world AI and software projects.',
       'Current CGPA: 8.52/10.0'
     ],
     id: 'EDU-02',
@@ -23,8 +23,9 @@ const education = [
     period: '2022 — 2023',
     location: 'Chennai, India',
     details: [
-      'Secured 95% in Mathematics and Computer Science.',
-      'Represented school in regional programming contests.'
+      'Built a strong foundation in Mathematics, Physics, Chemistry & Biology.',
+      'Developed analytical thinking and problem-solving skills through mathematics and science.',
+      'Score: 87%'
     ],
     id: 'EDU-01',
     color: 'var(--c-careers)',
