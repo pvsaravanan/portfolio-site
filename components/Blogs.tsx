@@ -32,7 +32,7 @@ const blogPosts = [
 export default function Blogs() {
   return (
     <section id="blogs" className="border-b border-[var(--ink)] bg-[var(--paper)]">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <SectionHeader
           index="05"
           label="BLOGS"
@@ -48,7 +48,7 @@ export default function Blogs() {
             return (
               <article
                 key={post.id}
-                className="group relative border-b border-[var(--ink)] py-8 cursor-pointer hover:bg-[var(--paper-2)] transition-colors duration-150"
+                className="group relative border-b border-[var(--ink)] py-6 cursor-pointer hover:bg-[var(--paper-2)] transition-colors duration-150"
                 role={post.link ? 'link' : undefined}
                 tabIndex={post.link ? 0 : undefined}
                 onClick={() => {
@@ -72,7 +72,7 @@ export default function Blogs() {
                   </span>
 
                   <div className="flex-1 min-w-0">
-                    <div className="flex flex-wrap items-center gap-2.5 mb-3">
+                    <div className="flex flex-wrap items-center gap-2.5 mb-2">
                       <span className="text-[10px] font-bold text-[var(--accent)] uppercase tracking-widest">
                         {post.date}
                       </span>
@@ -85,15 +85,15 @@ export default function Blogs() {
                       </span>
                     </div>
 
-                    <h3 className="text-xl sm:text-2xl font-extrabold leading-snug uppercase tracking-tight mb-3 group-hover:text-[var(--accent)] transition-colors">
+                    <h3 className="text-xl sm:text-2xl font-extrabold leading-snug uppercase tracking-tight mb-2 group-hover:text-[var(--accent)] transition-colors">
                       {post.title}
                     </h3>
 
-                    <p className="text-[12px] text-[var(--ink-3)] leading-relaxed max-w-2xl mb-4">
+                    <p className="text-[12px] text-[var(--ink-3)] leading-snug max-w-2xl mb-3">
                       {post.excerpt}
                     </p>
 
-                    <div className="flex flex-wrap gap-2 mb-5">
+                    <div className="flex flex-wrap gap-2 mb-3">
                       {post.tags.map((tag) => (
                         <span
                           key={tag}
@@ -104,7 +104,7 @@ export default function Blogs() {
                       ))}
                     </div>
 
-                    <div className="flex items-center justify-between pt-4 border-t border-dashed border-[var(--rule)]">
+                    <div className="flex items-center justify-between pt-3 border-t border-dashed border-[var(--rule)]">
                       <span className="text-[9px] font-bold tracking-widest uppercase text-[var(--ink-2)]">
                         BY {post.author}
                       </span>
@@ -120,7 +120,7 @@ export default function Blogs() {
           })}
         </div>
 
-        <div className="mt-10 text-center sm:hidden">
+        <div className="mt-6 text-center sm:hidden">
           <Button href="#" variant="outline" className="w-full">View All Posts</Button>
         </div>
       </div>
