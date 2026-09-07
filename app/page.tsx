@@ -3,8 +3,6 @@
 import { useState, useEffect } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-import LiveFeed from '@/components/LiveFeed';
-import TechCarousel from '@/components/TechCarousel';
 import Projects from '@/components/Projects';
 import Experience from '@/components/Experience';
 import Education from '@/components/Education';
@@ -31,12 +29,10 @@ export default function Home() {
     <>
       <LoadingScreen />
       {!isLoading && (
-        <main>
+        <main className="relative">
           <Header />
           <Hero />
-          <LiveFeed />
           <Education />
-          <TechCarousel />
           <Skills />
           <Experience />
           <Projects />
