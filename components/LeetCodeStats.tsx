@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { ActivityCalendar } from 'react-activity-calendar';
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
@@ -74,6 +74,7 @@ export default function LeetCodeStats() {
   const [data, setData] = useState<LeetCodeData | null>(null);
   const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading');
   const [selectedTheme, setSelectedTheme] = useState<keyof typeof HEATMAP_THEMES>('green');
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -110,6 +111,17 @@ export default function LeetCodeStats() {
     dark: activeHeatmapTheme.colors,
   };
 
+  // On mobile the calendar renders at its natural (legible) size instead of being squeezed
+  // to fit the viewport, so the wrapper scrolls horizontally. Default that scroll to the
+  // right edge so the most recent submissions are visible without the user needing to swipe first.
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      const el = scrollContainerRef.current;
+      if (el) el.scrollLeft = el.scrollWidth;
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [selectedTheme, activities]);
+
   if (status === 'error') {
     return (
       <div className="border border-dashed border-[var(--rule)] px-4 py-6 text-center text-[11px] text-[var(--ink-4)]">
@@ -127,7 +139,7 @@ export default function LeetCodeStats() {
   }
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-6 sm:gap-8">
       {/* Headline Stat Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 border border-[#0B1220]">
         <div className="px-4 py-3">
@@ -222,7 +234,10 @@ export default function LeetCodeStats() {
             </div>
           </div>
         </div>
-        <div className="w-full flex justify-center py-4 bg-white/30 border border-[var(--rule)] rounded-sm px-4 [&_svg]:w-full [&_svg]:h-auto [&_svg]:max-w-none">
+        <div
+          ref={scrollContainerRef}
+          className="w-full flex justify-start sm:justify-center overflow-x-auto py-4 bg-white/30 border border-[var(--rule)] rounded-sm px-4 [&>*]:shrink-0 [&_svg]:h-auto sm:[&_svg]:w-full sm:[&_svg]:max-w-none"
+        >
           <ActivityCalendar
             data={activities}
             theme={heatmapTheme}

@@ -39,7 +39,19 @@ export default function Stats() {
   const [yearStats, setYearStats] = useState<YearStats>(EMPTY_STATS);
   const [activeTab, setActiveTab] = useState<GitHubTab>('contributions');
   const [lastYearTotal, setLastYearTotal] = useState<number | null>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const years = [2026, 2025, 2024];
+
+  // On mobile the calendar renders at its natural (legible) size instead of being squeezed
+  // to fit the viewport, so the wrapper scrolls horizontally. Default that scroll to the
+  // right edge so the most recent days are visible without the user needing to swipe first.
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      const el = scrollContainerRef.current;
+      if (el) el.scrollLeft = el.scrollWidth;
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [selectedYear, selectedTheme, mounted]);
 
   // Rolling "last 365 days" total for the prominent username header, independent of
   // whichever calendar year is currently selected below.
@@ -289,7 +301,10 @@ export default function Stats() {
                           transition={{ duration: 0.3, ease: "easeInOut" }}
                           className="w-full pb-4"
                         >
-                          <div className="w-full flex justify-center py-4 bg-white/30 border border-[var(--rule)] rounded-sm px-4 [&_svg]:w-full [&_svg]:h-auto [&_svg]:max-w-none">
+                          <div
+                            ref={scrollContainerRef}
+                            className="w-full flex justify-start sm:justify-center overflow-x-auto py-4 bg-white/30 border border-[var(--rule)] rounded-sm px-4 [&>*]:shrink-0 [&_svg]:h-auto sm:[&_svg]:w-full sm:[&_svg]:max-w-none"
+                          >
                             <GitHubCalendar 
                               username={GITHUB_USERNAME}
                               year={selectedYear}
