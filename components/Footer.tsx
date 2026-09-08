@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { FaGithub, FaLinkedin, FaXTwitter, FaInstagram, FaEnvelope } from 'react-icons/fa6';
 import { SiLeetcode } from 'react-icons/si';
 import Button from './Button';
@@ -74,6 +75,20 @@ export default function Footer() {
               </a>
             ))}
           </div>
+        </div>
+
+        {/* Developed & Signed */}
+        <div className="mt-4 pt-3 sm:mt-6 sm:pt-4 border-t border-dashed border-[#cbd5e1]">
+          <a href="#home" className="inline-block group">
+            <p className="text-[11px] text-[#374151] mb-1">Developed &amp; Signed by</p>
+            <Image
+              src="/signature.png"
+              alt="Saravanan P V signature"
+              width={376}
+              height={167}
+              className="w-40 sm:w-52 h-auto -ml-1 opacity-90 group-hover:opacity-100 transition-opacity"
+            />
+          </a>
         </div>
 
         <div className="mt-4 pt-3 sm:mt-6 sm:pt-4 border-t border-[#cbd5e1] flex flex-col sm:flex-row items-center justify-between gap-2">
