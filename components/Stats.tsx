@@ -162,19 +162,19 @@ export default function Stats() {
 
   return (
     <section id="stats" className="border-b border-[#0B1220] bg-[var(--paper-2)]">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12">
         <SectionHeader index="06" label="ACTIVITY" title="CODING" muted="ACTIVITY" />
 
-        <div className="grid grid-cols-1 gap-8">
+        <div className="grid grid-cols-1 gap-6 sm:gap-8">
           {/* Interactive GitHub Calendar */}
-          <div className="border-2 border-[#0B1220] bg-[var(--paper)] p-5 sm:p-6 lg:p-8 shadow-[var(--sh-2)] relative group hover:shadow-[var(--sh-hover)] transition-all duration-150">
+          <div className="border-2 border-[#0B1220] bg-[var(--paper)] p-4 sm:p-6 lg:p-8 shadow-[var(--sh-2)] relative group hover:shadow-[var(--sh-hover)] transition-all duration-150">
             <span className="absolute top-1.5 left-1.5 w-1.5 h-1.5 bg-[var(--ink)] opacity-20" />
             <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-[var(--ink)] opacity-20" />
             <span className="absolute bottom-1.5 left-1.5 w-1.5 h-1.5 bg-[var(--ink)] opacity-20" />
             <span className="absolute bottom-1.5 right-1.5 w-1.5 h-1.5 bg-[var(--ink)] opacity-20" />
 
             {/* Username Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 sm:mb-6">
               <div className="flex items-center gap-3">
                 <FaGithub className="w-8 h-8 text-[#0B1220] shrink-0" />
                 <div>
@@ -195,7 +195,7 @@ export default function Stats() {
             </div>
 
             {/* Tab Toggle */}
-            <div className="flex sm:inline-flex items-center gap-1 bg-[var(--paper-2)] border border-[var(--rule)] rounded-full p-1 mb-8 w-full sm:w-auto">
+            <div className="flex sm:inline-flex items-center gap-1 bg-[var(--paper-2)] border border-[var(--rule)] rounded-full p-1 mb-6 sm:mb-8 w-full sm:w-auto">
               <button
                 onClick={() => setActiveTab('contributions')}
                 className={`flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 sm:px-4 py-2 rounded-full text-[10px] sm:text-[11px] font-bold whitespace-nowrap transition-all duration-150 ${
@@ -222,7 +222,7 @@ export default function Stats() {
 
             {activeTab === 'contributions' ? (
               <>
-                <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-6">
+                <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 sm:mb-6 gap-4 sm:gap-6">
                   <div className="flex flex-col sm:flex-row sm:items-end gap-6 sm:gap-12">
                     <div className="flex flex-col gap-1">
                       <h3 className="text-sm font-bold uppercase tracking-widest flex items-center gap-2">
@@ -272,7 +272,7 @@ export default function Stats() {
                 </div>
 
                 {/* Headline Stat Cards */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 border border-[#0B1220] mb-8">
+                <div className="grid grid-cols-2 sm:grid-cols-4 border border-[#0B1220] mb-6 sm:mb-8">
                   {statCards.map((stat, i) => (
                     <div key={stat.label} className={`px-4 py-3 ${STAT_CARD_BORDERS[i]}`}>
                       <div className="text-xl font-bold text-[#0B1220]">{stat.value}</div>
@@ -285,7 +285,7 @@ export default function Stats() {
                 </div>
 
                 <div>
-                  <div className="flex items-center gap-2 mb-4">
+                  <div className="flex items-center gap-2 mb-3 sm:mb-4">
                     <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--ink-4)]">{selectedYear} Contributions</span>
                     <div className="h-[1px] flex-grow bg-[var(--rule)] opacity-50" />
                   </div>
@@ -348,13 +348,13 @@ export default function Stats() {
           </div>
 
           {/* LeetCode Stats */}
-          <div className="border-2 border-[#0B1220] bg-[var(--paper)] p-5 sm:p-6 lg:p-8 shadow-[var(--sh-2)] relative group hover:shadow-[var(--sh-hover)] transition-all duration-150">
+          <div className="border-2 border-[#0B1220] bg-[var(--paper)] p-4 sm:p-6 lg:p-8 shadow-[var(--sh-2)] relative group hover:shadow-[var(--sh-hover)] transition-all duration-150">
             <span className="absolute top-1.5 left-1.5 w-1.5 h-1.5 bg-[var(--ink)] opacity-20" />
             <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-[var(--ink)] opacity-20" />
             <span className="absolute bottom-1.5 left-1.5 w-1.5 h-1.5 bg-[var(--ink)] opacity-20" />
             <span className="absolute bottom-1.5 right-1.5 w-1.5 h-1.5 bg-[var(--ink)] opacity-20" />
             
-            <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4">
+            <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 sm:mb-6 gap-3 sm:gap-4">
               <h3 className="text-sm font-bold uppercase tracking-widest flex items-center gap-2">
                 <span className="w-2 h-2 bg-[#FCD34D]" />
                 LeetCode Performance

@@ -54,7 +54,7 @@ const projects = [
 export default function Projects() {
   return (
     <section id="projects" className="border-b border-[#0B1220]">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
         <SectionHeader
           index="04"
           label="WORKS"
@@ -67,7 +67,7 @@ export default function Projects() {
           }
         />
 
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-3 sm:gap-4">
           {projects.map((project, idx) => {
             const reversed = idx % 2 === 1;
             const number = project.id.split('-')[1];
@@ -96,7 +96,7 @@ export default function Projects() {
                 <div className={`flex flex-col lg:flex-row ${reversed ? 'lg:flex-row-reverse' : ''}`}>
                   {/* Visual Panel */}
                   <div
-                    className={`relative w-full lg:w-1/2 aspect-[16/9] lg:aspect-auto overflow-hidden border-b lg:border-b-0 border-[#0B1220] ${
+                    className={`relative w-full lg:w-1/2 aspect-[2/1] sm:aspect-[16/9] lg:aspect-auto overflow-hidden border-b lg:border-b-0 border-[#0B1220] ${
                       reversed ? 'lg:border-l' : 'lg:border-r'
                     }`}
                     style={{ background: `linear-gradient(135deg, ${project.tagColor}2A, var(--paper-2) 70%)` }}
@@ -131,7 +131,7 @@ export default function Projects() {
                   </div>
 
                   {/* Details Panel */}
-                  <div className="w-full lg:w-1/2 flex flex-col justify-center p-5 sm:p-6 lg:p-8">
+                  <div className="w-full lg:w-1/2 flex flex-col justify-center p-4 sm:p-6 lg:p-8">
                     <div className="flex items-center gap-2 mb-2">
                       <span className="text-[10px] font-bold tracking-widest text-[var(--ink-4)]">{project.id}</span>
                       <span className="w-1 h-1 bg-[var(--ink-4)]" />
@@ -140,15 +140,15 @@ export default function Projects() {
                       </span>
                     </div>
 
-                    <h3 className="text-2xl sm:text-3xl font-extrabold uppercase tracking-tight leading-[1.05] text-[#0B1220] mb-3">
+                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold uppercase tracking-tight leading-[1.05] text-[#0B1220] mb-2 sm:mb-3">
                       {project.title}
                     </h3>
 
-                    <p className="text-[13px] text-[#374151] leading-snug mb-4 max-w-md">
+                    <p className="text-[13px] text-[#374151] leading-snug mb-3 sm:mb-4 max-w-md">
                       {project.desc}
                     </p>
 
-                    <div className="flex flex-wrap gap-2 mb-5">
+                    <div className="flex flex-wrap gap-2 mb-4 sm:mb-5">
                       {project.tags.map((tag) => (
                         <span
                           key={tag}
@@ -159,7 +159,7 @@ export default function Projects() {
                       ))}
                     </div>
 
-                    <div className="flex items-center justify-between pt-3 border-t border-dashed border-[#cbd5e1]">
+                    <div className="flex items-center justify-between pt-2 sm:pt-3 border-t border-dashed border-[#cbd5e1]">
                       <span className="text-[9px] tracking-widest text-[#374151] font-bold uppercase">
                         BY {project.author}
                       </span>

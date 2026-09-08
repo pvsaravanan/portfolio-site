@@ -158,16 +158,16 @@ function SkillGroup({ title, skills, delay }: { title: string; skills: string[];
 export default function Skills() {
   return (
     <section id="skills" className="border-b border-[#0B1220] bg-[var(--paper-2)]">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
         <SectionHeader index="02" label="SKILLS" title="TECHNICAL" muted="ARSENAL" />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
-          <div className="flex flex-col gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-6 sm:gap-y-10">
+          <div className="flex flex-col gap-6 sm:gap-10">
             {leftGroups.map((group, idx) => (
               <SkillGroup key={group.title} title={group.title} skills={group.skills} delay={idx * 0.08} />
             ))}
           </div>
-          <div className="flex flex-col gap-10">
+          <div className="flex flex-col gap-6 sm:gap-10">
             {rightGroups.map((group, idx) => (
               <SkillGroup key={group.title} title={group.title} skills={group.skills} delay={idx * 0.08} />
             ))}

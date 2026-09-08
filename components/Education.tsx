@@ -35,14 +35,14 @@ const education = [
 export default function Education() {
   return (
     <section id="education" className="border-b border-[var(--ink)] bg-[var(--paper-2)]">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <SectionHeader index="01" label="EDUCATION" title="ACADEMIC" muted="BACKGROUND" ink="light" />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           {education.map((edu) => (
             <div 
               key={edu.id}
-              className="border-2 border-[var(--ink)] bg-[var(--paper)] p-6 shadow-[var(--sh-2)] relative group hover:shadow-[var(--sh-hover)] transition-all duration-150"
+              className="border-2 border-[var(--ink)] bg-[var(--paper)] p-5 sm:p-6 shadow-[var(--sh-2)] relative group hover:shadow-[var(--sh-hover)] transition-all duration-150"
             >
               {/* Corner brackets */}
               <span className="absolute top-1.5 left-1.5 w-1.5 h-1.5 bg-[var(--ink)] opacity-20" />
@@ -50,7 +50,7 @@ export default function Education() {
               <span className="absolute bottom-1.5 left-1.5 w-1.5 h-1.5 bg-[var(--ink)] opacity-20" />
               <span className="absolute bottom-1.5 right-1.5 w-1.5 h-1.5 bg-[var(--ink)] opacity-20" />
 
-              <div className="flex justify-between items-start mb-4">
+              <div className="flex justify-between items-start mb-3 sm:mb-4">
                 <div className="flex-1">
                   <span className="text-[10px] tracking-widest font-bold mb-1 block" style={{ color: edu.color }}>
                     {edu.period}
@@ -69,13 +69,13 @@ export default function Education() {
                 </div>
               </div>
 
-              <div className="mb-4">
+              <div className="mb-3 sm:mb-4">
                  <span className="text-[10px] text-[var(--ink-4)] uppercase tracking-wider block mb-2">
                    {edu.location}
                  </span>
               </div>
 
-              <ul className="space-y-2 border-t border-dashed border-[var(--rule)] pt-4">
+              <ul className="space-y-2 border-t border-dashed border-[var(--rule)] pt-3 sm:pt-4">
                 {edu.details.map((detail, idx) => (
                   <li key={idx} className="flex items-start gap-2">
                     <span className="w-1 h-1 bg-[var(--ink)] mt-1.5 shrink-0" />

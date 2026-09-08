@@ -18,9 +18,9 @@ const socialLinks = [
 export default function Footer() {
   return (
     <footer className="border-t border-[#0B1220] bg-[#EBE7DE]">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         {/* CTA */}
-        <div className="mb-6 pb-6 border-b border-dashed border-[#cbd5e1]">
+        <div className="mb-4 pb-4 sm:mb-6 sm:pb-6 border-b border-dashed border-[#cbd5e1]">
           <SectionHeader
             index="08"
             label="CONTACT"
@@ -76,7 +76,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-6 pt-4 border-t border-[#cbd5e1] flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div className="mt-4 pt-3 sm:mt-6 sm:pt-4 border-t border-[#cbd5e1] flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-[10px] text-[#374151] tracking-widest uppercase">
             © 2026 SARAVANAN P V
           </p>

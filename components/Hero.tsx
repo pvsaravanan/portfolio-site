@@ -31,7 +31,7 @@ const socialLinks = [
 export default function Hero() {
   return (
     <section id="home" className="border-b border-[#0B1220] bg-[var(--paper-2)]">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
         <div className="border-2 border-[#0B1220] bg-[var(--paper)] shadow-[var(--sh-3)] relative">
           <span className="absolute top-1.5 left-1.5 w-1.5 h-1.5 bg-[var(--ink)] opacity-20" />
           <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-[var(--ink)] opacity-20" />
@@ -66,8 +66,8 @@ export default function Hero() {
           </div>
 
           {/* Content */}
-          <div className="pt-16 sm:pt-20 lg:pt-24 pb-8 sm:pb-10 px-6 sm:px-10 lg:px-12">
-            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-6">
+          <div className="pt-14 sm:pt-20 lg:pt-24 pb-6 sm:pb-10 px-5 sm:px-10 lg:px-12">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-4 sm:mb-6">
               <div>
                 <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0B1220]">SARAVANAN P V</h2>
                 <span className="text-[10px] tracking-[0.2em] font-bold text-[#374151] uppercase">
@@ -92,7 +92,7 @@ export default function Hero() {
               </div>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter leading-[0.95] sm:leading-[0.9] mb-6 text-[#0B1220] max-w-2xl">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter leading-[0.95] sm:leading-[0.9] mb-4 sm:mb-6 text-[#0B1220] max-w-2xl">
               BUILDING SCALABLE
               <br />
               <span className="inline-block bg-[#E07A5F] text-white px-3 py-1 mt-2">
@@ -102,11 +102,11 @@ export default function Hero() {
               <em className="font-light italic">SOLUTIONS.</em>
             </h1>
 
-            <p className="text-sm text-[#374151] leading-relaxed mb-8 max-w-2xl">
+            <p className="text-sm text-[#374151] leading-relaxed mb-6 sm:mb-8 max-w-2xl">
               AI engineer focused on building production-ready intelligent systems powered by LLMs, RAG pipelines, and multi-modal AI architectures. Experienced in developing scalable backend infrastructure, local AI deployments, and high-performance inference workflows using modern AI and full-stack technologies.
             </p>
 
-            <div className="flex flex-wrap items-center gap-4 mb-10">
+            <div className="flex flex-wrap items-center gap-4 mb-6 sm:mb-10">
               <Button href="#projects" variant="primary">View My Works</Button>
               <Button href="mailto:saravananpv30102005@gmail.com" variant="outline">Hire Me</Button>
             </div>
