@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Button from './Button';
+import { motion } from 'framer-motion';
 
 import Image from 'next/image';
 
@@ -32,7 +33,12 @@ export default function Hero() {
   return (
     <section id="home" className="border-b border-[#0B1220] bg-[var(--paper-2)]">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
-        <div className="border-2 border-[#0B1220] bg-[var(--paper)] shadow-[var(--sh-3)] relative">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="border-2 border-[#0B1220] bg-[var(--paper)] shadow-[var(--sh-3)] relative"
+        >
           <span className="absolute top-1.5 left-1.5 w-1.5 h-1.5 bg-[var(--ink)] opacity-20" />
           <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-[var(--ink)] opacity-20" />
           <span className="absolute bottom-1.5 left-1.5 w-1.5 h-1.5 bg-[var(--ink)] opacity-20" />
@@ -135,7 +141,7 @@ export default function Hero() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

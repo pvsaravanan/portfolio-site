@@ -80,6 +80,11 @@ html.lenis body {
 
 html {
   overflow-x: hidden;
+  /* Reserve the vertical scrollbar's width up front so it doesn't suddenly
+     appear once the (much taller) page content mounts after the splash
+     screen unmounts, which was causing a slight horizontal layout shift. */
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
 }
 
 body {

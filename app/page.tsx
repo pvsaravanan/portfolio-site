@@ -16,11 +16,12 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // The loading screen handles its own timing (2.5 seconds total)
-    // We just need to wait for it to complete
+    // Mount the real content just as LoadingScreen starts fading out
+    // (2000ms progress fill + 400ms pause), so the two cross-fade together
+    // instead of the page flashing in empty after the splash disappears.
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2500);
+    }, 2400);
 
     return () => clearTimeout(timer);
   }, []);
