@@ -53,6 +53,85 @@ async function fetchJson<T>(url: string): Promise<T | null> {
   }
 }
 
+type RecentData = { commits: CommitItem[]; merges: MergeItem[] };
+let recentPromise: Promise<RecentData | null> | null = null;
+
+// Shared + cached so it can be warmed before the section is opened (the mobile Coding tab does this),
+// instead of firing ~9 GitHub requests only once the user gets there.
+export function loadRecentActivity(): Promise<RecentData | null> {
+  if (!recentPromise) {
+    recentPromise = (async () => {
+        const repos = await fetchJson<GitHubRepo[]>(
+          `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=pushed&per_page=15`
+        );
+
+        if (!repos) return null;
+
+        const activeRepos = repos
+          .filter((repo) => !repo.fork)
+          .slice(0, REPO_COUNT);
+
+        const results = await Promise.allSettled(
+          activeRepos.map(async (repo) => {
+            const [repoCommits, repoPulls] = await Promise.all([
+              fetchJson<GitHubCommit[]>(
+                `https://api.github.com/repos/${GITHUB_USERNAME}/${repo.name}/commits?per_page=3`
+              ),
+              fetchJson<GitHubPull[]>(
+                `https://api.github.com/repos/${GITHUB_USERNAME}/${repo.name}/pulls?state=closed&per_page=5`
+              ),
+            ]);
+
+            return { repo: repo.name, repoCommits: repoCommits ?? [], repoPulls: repoPulls ?? [] };
+          })
+        );
+
+        const allCommits: CommitItem[] = [];
+        const allMerges: MergeItem[] = [];
+
+        for (const result of results) {
+          if (result.status !== 'fulfilled') continue;
+          const { repo, repoCommits, repoPulls } = result.value;
+
+          for (const commit of repoCommits) {
+            const date = commit.commit.author?.date ?? commit.commit.committer?.date;
+            if (!date) continue;
+            allCommits.push({
+              key: commit.sha,
+              message: commit.commit.message.split('\n')[0],
+              repo,
+              date,
+              url: commit.html_url,
+            });
+          }
+
+          for (const pull of repoPulls) {
+            if (!pull.merged_at) continue;
+            allMerges.push({
+              key: `${repo}-${pull.number}`,
+              title: pull.title,
+              repo,
+              date: pull.merged_at,
+              url: pull.html_url,
+            });
+          }
+        }
+
+        allCommits.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+        allMerges.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+        return {
+          commits: allCommits.slice(0, ITEMS_PER_LIST),
+          merges: allMerges.slice(0, ITEMS_PER_LIST),
+        };
+    })().then((r) => {
+      if (!r) recentPromise = null; // allow a retry after a failure
+      return r;
+    });
+  }
+  return recentPromise;
+}
+
 export default function RecentActivity() {
   const [commits, setCommits] = useState<CommitItem[]>([]);
   const [merges, setMerges] = useState<MergeItem[]>([]);
@@ -60,77 +139,16 @@ export default function RecentActivity() {
 
   useEffect(() => {
     let cancelled = false;
-
-    (async () => {
-      const repos = await fetchJson<GitHubRepo[]>(
-        `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=pushed&per_page=15`
-      );
-
-      if (!repos) {
-        if (!cancelled) setStatus('error');
+    loadRecentActivity().then((r) => {
+      if (cancelled) return;
+      if (!r) {
+        setStatus('error');
         return;
       }
-
-      const activeRepos = repos
-        .filter((repo) => !repo.fork)
-        .slice(0, REPO_COUNT);
-
-      const results = await Promise.allSettled(
-        activeRepos.map(async (repo) => {
-          const [repoCommits, repoPulls] = await Promise.all([
-            fetchJson<GitHubCommit[]>(
-              `https://api.github.com/repos/${GITHUB_USERNAME}/${repo.name}/commits?per_page=3`
-            ),
-            fetchJson<GitHubPull[]>(
-              `https://api.github.com/repos/${GITHUB_USERNAME}/${repo.name}/pulls?state=closed&per_page=5`
-            ),
-          ]);
-
-          return { repo: repo.name, repoCommits: repoCommits ?? [], repoPulls: repoPulls ?? [] };
-        })
-      );
-
-      const allCommits: CommitItem[] = [];
-      const allMerges: MergeItem[] = [];
-
-      for (const result of results) {
-        if (result.status !== 'fulfilled') continue;
-        const { repo, repoCommits, repoPulls } = result.value;
-
-        for (const commit of repoCommits) {
-          const date = commit.commit.author?.date ?? commit.commit.committer?.date;
-          if (!date) continue;
-          allCommits.push({
-            key: commit.sha,
-            message: commit.commit.message.split('\n')[0],
-            repo,
-            date,
-            url: commit.html_url,
-          });
-        }
-
-        for (const pull of repoPulls) {
-          if (!pull.merged_at) continue;
-          allMerges.push({
-            key: `${repo}-${pull.number}`,
-            title: pull.title,
-            repo,
-            date: pull.merged_at,
-            url: pull.html_url,
-          });
-        }
-      }
-
-      allCommits.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-      allMerges.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-
-      if (!cancelled) {
-        setCommits(allCommits.slice(0, ITEMS_PER_LIST));
-        setMerges(allMerges.slice(0, ITEMS_PER_LIST));
-        setStatus('ready');
-      }
-    })();
-
+      setCommits(r.commits);
+      setMerges(r.merges);
+      setStatus('ready');
+    });
     return () => {
       cancelled = true;
     };

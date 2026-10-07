@@ -11,9 +11,20 @@ import Stats from '@/components/Stats';
 import Skills from '@/components/Skills';
 import Footer from '@/components/Footer';
 import LoadingScreen from '@/components/LoadingScreen';
+import MobileApp from '@/components/mobile/MobileApp';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
+  // Phones get a dedicated app-style layout; the desktop page is untouched.
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)');
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
 
   useEffect(() => {
     // Mount the real content just as LoadingScreen starts fading out
@@ -29,7 +40,8 @@ export default function Home() {
   return (
     <>
       <LoadingScreen />
-      {!isLoading && (
+      {!isLoading && isMobile && <MobileApp />}
+      {!isLoading && !isMobile && (
         <main className="relative">
           <Header />
           <Hero />

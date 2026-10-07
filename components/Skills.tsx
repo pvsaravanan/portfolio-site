@@ -50,7 +50,7 @@ interface SkillMeta {
 }
 
 // Real brand icons are used where available; domain icons represent conceptual skills.
-const SKILL_META: Record<string, SkillMeta> = {
+export const SKILL_META: Record<string, SkillMeta> = {
   'Python': { icon: SiPython, color: '#3776AB' },
   'TypeScript': { icon: SiTypescript, color: '#3178C6' },
   'JavaScript': { icon: SiJavascript, color: '#F7DF1E' },
