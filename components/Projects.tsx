@@ -2,9 +2,24 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import SectionHeader from './SectionHeader';
 
 const projects = [
+  {
+    id: 'W-05',
+    tag: 'PROJECT',
+    tagColor: '#4ADE80',
+    title: 'BAAKI',
+    desc: 'Offline-first personal finance app for everyday money in India — budgets, goals, splits and reports, running entirely on your Android phone with an on-device Postgres. No account, no server.',
+    date: 'SEPTEMBER 27, 2026',
+    author: 'SARAVANAN P V',
+    link: 'https://github.com/pvsaravanan/baaki',
+    cover: '/projects/baaki-cover.jpg',
+    coverFit: 'contain',
+    coverBg: '#F4F1EA',
+    tags: ['NEXT.JS', 'CAPACITOR', 'PGLITE (WASM)', 'OFFLINE-FIRST'],
+  },
   {
     id: 'W-04',
     tag: 'PROJECT',
@@ -14,6 +29,9 @@ const projects = [
     date: 'APRIL 15, 2026',
     author: 'SARAVANAN P V',
     link: 'https://github.com/pvsaravanan/whispercrawler',
+    cover: '/projects/whispercrawler-cover.jpg',
+    coverBg: '#0b0b0b',
+    coverPos: 'object-[50%_40%]',
     tags: ['PYTHON', 'PLAYWRIGHT', 'ANTI-DETECTION', 'ASYNC I/O'],
   },
   {
@@ -25,6 +43,9 @@ const projects = [
     date: 'APRIL 18, 2026',
     author: 'SARAVANAN P V',
     link: 'https://github.com/pvsaravanan/parallax.ai',
+    cover: '/projects/parallax-cover.jpg',
+    coverBg: '#0b0b0b',
+    coverPos: 'object-[30%_50%]',
     tags: ['NEXT.JS', 'OPENAI-COMPATIBLE API', 'ELO RANKING', 'MULTI-MODEL'],
   },
   {
@@ -36,6 +57,9 @@ const projects = [
     date: 'MARCH 01, 2026',
     author: 'SARAVANAN P V',
     link: 'https://github.com/pvsaravanan/Clara.ai',
+    cover: '/projects/clara-cover.jpg',
+    coverBg: '#FAF8F6',
+    coverPos: 'object-[20%_50%]',
     tags: ['RAG PIPELINE', 'LOCAL LLM', 'VECTOR SEARCH', 'NEXT.JS'],
   },
   {
@@ -47,6 +71,7 @@ const projects = [
     date: 'JANUARY 10, 2026',
     author: 'SARAVANAN P V',
     link: 'https://github.com/pvsaravanan/CradleSense',
+    cover: '/projects/cradlesense-cover.jpg',
     tags: ['IOT', 'REACT', 'REAL-TIME DASHBOARD', 'NODE.JS'],
   },
 ];
@@ -101,6 +126,23 @@ export default function Projects() {
                     }`}
                     style={{ background: `linear-gradient(135deg, ${project.tagColor}2A, var(--paper-2) 70%)` }}
                   >
+                    {project.cover ? (
+                      <Image
+                        src={project.cover}
+                        alt={`${project.title} cover`}
+                        fill
+                        sizes="(min-width: 1024px) 50vw, 100vw"
+                        className={
+                          project.coverFit === 'contain'
+                            ? 'object-contain p-3'
+                            : project.coverFit === 'contain-flush'
+                              ? 'object-contain'
+                              : `object-cover ${project.coverPos ?? ''}`
+                        }
+                        style={project.coverBg ? { backgroundColor: project.coverBg } : undefined}
+                      />
+                    ) : (
+                      <>
                     {/* dot-grid texture */}
                     <div
                       className="absolute inset-0 opacity-[0.18]"
@@ -111,27 +153,29 @@ export default function Projects() {
                     />
                     {/* oversized index numeral */}
                     <span
-                      className="absolute -bottom-4 -right-2 sm:-bottom-6 sm:-right-3 text-[72px] sm:text-[130px] lg:text-[160px] font-black leading-none select-none pointer-events-none"
+                      className="absolute -bottom-4 -left-2 sm:-bottom-6 sm:-left-3 text-[72px] sm:text-[130px] lg:text-[160px] font-black leading-none select-none pointer-events-none"
                       style={{ color: project.tagColor, opacity: 0.4 }}
                     >
                       {number}
                     </span>
+                      </>
+                    )}
                     {/* corner accents */}
                     <span className="absolute top-3 left-3 w-2 h-2 bg-[#0B1220]" />
                     <span className="absolute top-3 right-3 w-2 h-2 bg-[#0B1220]" />
                     <span className="absolute bottom-3 left-3 w-2 h-2 bg-[#0B1220]" />
                     <span className="absolute bottom-3 right-3 w-2 h-2 bg-[#0B1220]" />
+                  </div>
+
+                  {/* Details Panel */}
+                  <div className="relative w-full lg:w-1/2 flex flex-col justify-center p-4 sm:p-6 lg:p-8">
                     {/* tag badge */}
                     <span
-                      className="absolute top-4 left-4 px-2 py-1 text-[9px] font-bold tracking-widest uppercase text-[#0B1220]"
+                      className="absolute top-4 right-4 sm:top-6 sm:right-6 lg:top-8 lg:right-8 px-2 py-1 text-[9px] font-bold tracking-widest uppercase text-[#0B1220]"
                       style={{ backgroundColor: project.tagColor }}
                     >
                       {project.tag}
                     </span>
-                  </div>
-
-                  {/* Details Panel */}
-                  <div className="w-full lg:w-1/2 flex flex-col justify-center p-4 sm:p-6 lg:p-8">
                     <div className="flex items-center gap-2 mb-2">
                       <span className="text-[10px] font-bold tracking-widest text-[var(--ink-4)]">{project.id}</span>
                       <span className="w-1 h-1 bg-[var(--ink-4)]" />
