@@ -65,7 +65,7 @@ export default function HomeScreen({ go }: { go: (t: TabId) => void }) {
             <div className="absolute inset-0 translate-x-[5px] translate-y-[5px] bg-[#D88060]" aria-hidden="true" />
             <div className="absolute inset-0 overflow-hidden border-2 border-[#0B1220] bg-[#ece7db]">
               <Image
-                src="/profile.jpg"
+                src="/images/profile.jpg"
                 alt="Saravanan P V"
                 fill
                 sizes="104px"

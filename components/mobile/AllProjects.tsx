@@ -41,7 +41,7 @@ export default function AllProjects() {
 
         <div className="space-y-3">
           {list.map((p) => (
-            <ProjectCard key={p.title} p={p} />
+            <ProjectCard key={p.slug} p={p} />
           ))}
         </div>
       </main>

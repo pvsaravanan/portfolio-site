@@ -9,7 +9,7 @@ import { ArrowUpRight, DotGrid, FilterChips, ScreenHeader } from './ui';
 const TABS = ['LEETCODE', 'GITHUB'] as const;
 const WEEKS = 26;
 const GITHUB_GREEN = ['#EBE7DE', '#9be9a8', '#40c463', '#30a14e', '#216e39'];
-const HEAT = ['#EBE7DE', '#F8D4C8', '#F0A58F', '#E07A5F', '#C96A52'];
+const HEAT = ['#EBE7DE', '#C6EFD0', '#86DFA0', '#4ADE80', '#22A55A'];
 
 function Card({ title, right, children }: { title: string; right?: React.ReactNode; children: React.ReactNode }) {
   return (

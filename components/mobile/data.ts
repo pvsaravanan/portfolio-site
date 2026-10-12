@@ -61,6 +61,7 @@ export const experiences = [
   {
     n: '01',
     company: 'ServiceNow',
+    logo: '/images/ServiceNow.png',
     role: 'Associate Software Engineer Intern',
     period: 'Aug 2026 – Present',
     location: 'Chennai, India · Office',
@@ -74,6 +75,7 @@ export const experiences = [
   {
     n: '02',
     company: 'DeadEnd Engineers',
+    logo: '/images/DeadEnd_Engineers.png',
     role: 'Founding Member & Developer',
     period: 'Jan 2026 – Present',
     location: 'Community',
@@ -83,6 +85,7 @@ export const experiences = [
   {
     n: '03',
     company: 'Zybeak Technologies',
+    logo: '/images/zybeak_technologies_logo.jpeg',
     role: 'Cybersecurity Intern',
     period: 'Jan 2025 – Feb 2025',
     location: 'Chennai, India · On-site',
@@ -96,6 +99,7 @@ export const experiences = [
   {
     n: '04',
     company: 'DLK Technologies',
+    logo: '/images/dlktechnologies_logo.jpeg',
     role: 'Full-Stack Developer Intern',
     period: 'Jul 2024 – Aug 2024',
     location: 'Chennai, India · On-site',
@@ -108,73 +112,8 @@ export const experiences = [
   },
 ];
 
-export type ProjectCategory = 'PERSONAL' | 'OPEN SOURCE' | 'ACADEMIC';
-
-export const projects: {
-  title: string;
-  category: ProjectCategory;
-  desc: string;
-  tags: string[];
-  link: string;
-  tint: string;
-  cover?: string;
-  coverPos?: string;
-}[] = [
-  {
-    title: 'baaki',
-    category: 'PERSONAL',
-    desc: 'Offline-first personal finance app for everyday money in India: budgets, goals, splits and reports on an on-device Postgres. No account, no server.',
-    tags: ['Next.js', 'Capacitor', 'PGlite', 'Offline-first'],
-    link: 'https://github.com/pvsaravanan/baaki',
-    tint: '#F4F1EA',
-    cover: '/projects/baaki-cover.jpg',
-  },
-  {
-    title: 'CradleSense',
-    category: 'ACADEMIC',
-    desc: 'IoT-based neonatal care monitoring system for NICU with real-time vitals, dashboards, and alerting.',
-    tags: ['IoT', 'React', 'Node.js', 'Real-time'],
-    link: 'https://github.com/pvsaravanan/CradleSense',
-    tint: '#E3F1E1',
-    cover: '/projects/cradlesense-cover.jpg',
-  },
-  {
-    title: 'Clara.ai',
-    category: 'PERSONAL',
-    desc: 'Privacy-first AI answer engine with search + documents + local/cloud LLM support.',
-    tags: ['RAG', 'Vector Search', 'Next.js'],
-    link: 'https://github.com/pvsaravanan/Clara.ai',
-    tint: '#F9DDD3',
-    cover: '/projects/clara-cover.jpg',
-  },
-  {
-    title: 'Parallax.ai',
-    category: 'PERSONAL',
-    desc: 'Unified open-source AI model platform with chat modes, OpenAI-compatible API, and ELO research leaderboard.',
-    tags: ['Next.js', 'OpenAI API', 'Multi-Model'],
-    link: 'https://github.com/pvsaravanan/parallax.ai',
-    tint: '#DDE8F7',
-    cover: '/projects/parallax-cover.jpg',
-  },
-  {
-    title: 'WhisperCrawler',
-    category: 'PERSONAL',
-    desc: 'Adaptive web scraping framework with stealth mode and self-healing selectors.',
-    tags: ['Python', 'Playwright', 'Async I/O'],
-    link: 'https://github.com/pvsaravanan/whispercrawler',
-    tint: '#F9DDD3',
-    cover: '/projects/whispercrawler-cover.jpg',
-    coverPos: '50% 12%',
-  },
-  {
-    title: 'DevMe',
-    category: 'OPEN SOURCE',
-    desc: 'Contributed features for a customizable developer dashboard, first-time setup, and bug fixes.',
-    tags: ['Chrome Extension', 'JS', 'UI/UX'],
-    link: 'https://github.com/pvsaravanan',
-    tint: '#EDE7DA',
-  },
-];
+export type { ProjectCategory } from '@/lib/projects';
+export { projects } from '@/lib/projects';
 
 export const PROJECT_FILTERS = ['ALL', 'ACADEMIC', 'OPEN SOURCE', 'PERSONAL'] as const;
 

@@ -82,7 +82,7 @@ export default function Footer() {
           <a href="#home" className="inline-block group">
             <p className="text-[11px] text-[#374151] mb-1">Developed &amp; Signed by</p>
             <Image
-              src="/signature.png"
+              src="/images/signature.png"
               alt="Saravanan P V signature"
               width={376}
               height={167}

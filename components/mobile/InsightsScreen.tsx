@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { CATEGORY_COLORS, POST_FILTERS, posts } from './data';
-import { ArrowUpRight, DotGrid, FilterChips, ScreenHeader } from './ui';
+import { ArrowUpRight, FilterChips, ScreenHeader } from './ui';
 
 export default function InsightsScreen() {
   const [filter, setFilter] = useState<(typeof POST_FILTERS)[number]>('ALL');
@@ -33,12 +33,14 @@ export default function InsightsScreen() {
             rel="noopener noreferrer"
             className="relative flex gap-3 border border-[#0B1220] bg-[#F4F1EA] p-2 overflow-hidden"
           >
-            <div className="relative w-[84px] shrink-0 self-stretch min-h-[120px] bg-[#0B1220]">
-              <DotGrid className="inset-0 !opacity-30 invert" />
-              <span className="absolute inset-0 flex items-center justify-center text-3xl font-bold text-[#F4F1EA]/80">
-                {p.n}
-              </span>
-            </div>
+            {/* Ghost index numeral, same as the desktop Insights list */}
+            <span
+              aria-hidden="true"
+              className="shrink-0 select-none self-start pl-1 pt-1 text-[52px] font-black leading-none text-transparent"
+              style={{ WebkitTextStroke: '1.5px #0B1220' }}
+            >
+              {p.n}
+            </span>
             <div className="min-w-0 flex-1 py-1">
               <div className="flex items-center gap-2 text-[9px] tracking-wider text-[#6e6e6e]">
                 {p.date}

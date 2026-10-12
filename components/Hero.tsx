@@ -60,7 +60,7 @@ export default function Hero() {
             {/* Avatar overlapping the banner */}
             <div className="absolute left-6 sm:left-10 lg:left-12 bottom-0 translate-y-1/2 w-24 h-24 sm:w-32 sm:h-32 lg:w-36 lg:h-36 border-2 border-[#0B1220] bg-[var(--paper-2)] shadow-[6px_6px_0px_0px_var(--accent)] overflow-hidden z-10">
               <Image
-                src="/profile.jpg"
+                src="/images/profile.jpg"
                 alt="Saravanan P V"
                 fill
                 className="object-cover object-[50%_20%] grayscale hover:grayscale-0 transition-all duration-500"

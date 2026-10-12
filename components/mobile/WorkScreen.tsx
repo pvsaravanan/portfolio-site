@@ -3,6 +3,7 @@
 import { useRef, useState } from 'react';
 import { AnimatePresence, motion, useMotionValueEvent, useReducedMotion, useScroll, useSpring } from 'framer-motion';
 import { FaBookOpen, FaGraduationCap, FaLocationDot } from 'react-icons/fa6';
+import Image from 'next/image';
 import { education, experiences } from './data';
 import Skills from '../Skills';
 import { Corners, ScreenHeader, Tag } from './ui';
@@ -103,8 +104,17 @@ function ExperienceCard({ x }: { x: Experience }) {
             EXP - {x.n}
           </span>
         </div>
-        <div className="mt-3 flex items-start justify-between gap-3">
-          <div className="min-w-0">
+        <div className="mt-3 flex items-start gap-3">
+          {'logo' in x && x.logo && (
+            <Image
+              src={x.logo}
+              alt={`${x.company} logo`}
+              width={56}
+              height={56}
+              className="h-14 w-14 shrink-0 border border-[#0B1220] object-cover"
+            />
+          )}
+          <div className="min-w-0 flex-1">
             <h3 className="text-[17px] font-bold tracking-tight">{x.company}</h3>
             <p className="text-[12px] text-[#E07A5F]">{x.role}</p>
             <p className="mt-1 text-[10px] text-[#6e6e6e]">{x.location}</p>

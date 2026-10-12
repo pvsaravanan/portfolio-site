@@ -2,11 +2,13 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useSpring, useMotionValueEvent } from 'framer-motion';
+import Image from 'next/image';
 import SectionHeader from './SectionHeader';
 
 const experiences = [
   {
     company: 'ServiceNow',
+    logo: '/images/ServiceNow.png',
     role: 'Associate Software Engineer Intern',
     period: 'Aug 2026 — Present',
     location: 'Office',
@@ -23,6 +25,7 @@ const experiences = [
   },
   {
     company: 'DeadEnd Engineers',
+    logo: '/images/DeadEnd_Engineers.png',
     role: 'Founding Member & Developer',
     period: 'Jan 2026 — Present',
     location: '',
@@ -33,6 +36,7 @@ const experiences = [
   },
   {
     company: 'Zybeak Technologies',
+    logo: '/images/zybeak_technologies_logo.jpeg',
     role: 'Cybersecurity Intern',
     period: 'Jan 2025 — Feb 2025',
     location: 'Chennai, India',
@@ -48,6 +52,7 @@ const experiences = [
   },
   {
     company: 'DLK Technologies',
+    logo: '/images/dlktechnologies_logo.jpeg',
     role: 'Full-stack Developer Intern',
     period: 'Jul 2024 — Aug 2024',
     location: 'Chennai, India',
@@ -175,25 +180,38 @@ export default function Experience() {
                       {exp.id}
                     </span>
 
-                    <div className="flex flex-col mb-2">
-                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 mb-1">
-                        <h3 className="text-lg font-bold leading-tight uppercase tracking-tight">
-                          {exp.role}
-                        </h3>
-                        <div className="text-left sm:text-right shrink-0">
-                          <span className="text-[10px] tracking-tight text-[var(--ink-3)] font-medium block">
-                            {exp.period}
-                          </span>
-                          <span className="text-[9px] text-[var(--ink-4)] block uppercase">
-                            {exp.location}
-                          </span>
+                    <div className="flex gap-3">
+                      {'logo' in exp && exp.logo && (
+                        <Image
+                          src={exp.logo}
+                          alt={`${exp.company} logo`}
+                          width={56}
+                          height={56}
+                          className="h-14 w-14 shrink-0 object-cover border border-[var(--ink)]"
+                        />
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <div className="flex flex-col mb-2">
+                          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 mb-1">
+                            <h3 className="text-lg font-bold leading-tight uppercase tracking-tight">
+                              {exp.role}
+                            </h3>
+                            <div className="text-left sm:text-right shrink-0">
+                              <span className="text-[10px] tracking-tight text-[var(--ink-3)] font-medium block">
+                                {exp.period}
+                              </span>
+                              <span className="text-[9px] text-[var(--ink-4)] block uppercase">
+                                {exp.location}
+                              </span>
+                            </div>
+                          </div>
+                          <p className="text-sm font-bold text-[var(--accent)] mb-1 uppercase tracking-wide">
+                            {exp.company}
+                          </p>
                         </div>
                       </div>
-                      <p className="text-sm font-bold text-[var(--accent)] mb-1 uppercase tracking-wide">
-                        {exp.company}
-                      </p>
                     </div>
-                    
+
                     {Array.isArray(exp.description) ? (
                       <ul className="space-y-1 mb-4">
                         {exp.description.map((point) => (

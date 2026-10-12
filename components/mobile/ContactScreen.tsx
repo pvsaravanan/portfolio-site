@@ -66,7 +66,7 @@ export default function ContactScreen() {
 
       <div className="mt-6 border-t border-[#0B1220] pt-4">
         <p className="text-[11px] text-[#374151]">Developed &amp; Signed by</p>
-        <Image src="/signature.png" alt="Saravanan P V signature" width={376} height={167} className="mt-1 w-44 h-auto -ml-1" />
+        <Image src="/images/signature.png" alt="Saravanan P V signature" width={376} height={167} className="mt-1 w-44 h-auto -ml-1" />
       </div>
 
       <div className="mt-4 border-t border-[#cfc8b7] pt-3 flex justify-between gap-2 text-[9px] tracking-widest text-[#374151] uppercase">

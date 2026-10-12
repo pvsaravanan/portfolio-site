@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import EntryTracker from '@/components/EntryTracker';
 import SmoothScroll from '@/components/SmoothScroll';
 
 export const metadata: Metadata = {
@@ -16,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen">
+        <EntryTracker />
         <SmoothScroll>
           {children}
         </SmoothScroll>
