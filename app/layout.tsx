@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import EntryTracker from '@/components/EntryTracker';
 import SmoothScroll from '@/components/SmoothScroll';
+import { plusJakarta } from '@/lib/fonts';
 
 export const metadata: Metadata = {
   title: 'saravananpv',
@@ -15,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={plusJakarta.variable}>
       <body className="min-h-screen">
         <EntryTracker />
         <SmoothScroll>

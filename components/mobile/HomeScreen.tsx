@@ -86,7 +86,7 @@ export default function HomeScreen({ go }: { go: (t: TabId) => void }) {
           AI/ML Engineer · Full-stack Developer · SDE · RPA Developer
         </p>
 
-        <h1 className="mt-5 text-[clamp(22px,7.6vw,34px)] font-bold leading-[0.98] tracking-tighter">
+        <h1 className="mt-5 text-[clamp(22px,7.6vw,34px)] font-bold leading-[0.98] tracking-normal">
           BUILDING SCALABLE
           <br />
           <span className="mt-1.5 inline-block bg-[#D88060] px-2.5 py-0.5 text-[#F4F1EA]">INTELLIGENT</span>

@@ -2,6 +2,10 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import GitHubStats from '@/components/GitHubStats';
+import { repoFromUrl } from '@/lib/github';
+import Highlighted from '@/components/Highlighted';
+import ProjectGallery from '@/components/ProjectGallery';
 import { getProject, projects } from '@/lib/projects';
 
 type Params = { slug: string };
@@ -27,7 +31,7 @@ export default function ProjectPage({ params }: { params: Params }) {
   const next = realProjects[i + 1];
 
   return (
-    <div className="min-h-screen bg-[#F4F1EA] text-[#0B1220] pb-[env(safe-area-inset-bottom)]">
+    <div className={`min-h-screen bg-[#F4F1EA] text-[#0B1220] pb-[env(safe-area-inset-bottom)]`}>
       <header className="sticky top-0 z-40 border-b border-[#0B1220] bg-[#F4F1EA] pt-[env(safe-area-inset-top)]">
         <div className="max-w-[1100px] mx-auto flex h-14 items-center justify-between px-4 sm:px-6">
           <Link href="/#projects" className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.18em]">
@@ -70,15 +74,36 @@ export default function ProjectPage({ params }: { params: Params }) {
         </div>
 
         {p.cover && (
-          <div className="relative aspect-[1983/793] w-full border border-[#0B1220] mb-8" style={{ background: p.coverBg ?? '#0f0f0f' }}>
-            <Image src={p.cover} alt={`${p.title} cover`} fill priority sizes="(min-width: 1100px) 1100px, 100vw" className="object-contain" />
+          <div className="relative w-full border border-[#0B1220] mb-8 overflow-hidden" style={{ background: p.coverBg ?? '#0f0f0f', aspectRatio: p.coverRatio ?? 1983 / 793 }}>
+            {p.coverVideo ? (
+              <video
+                src={p.coverVideo}
+                poster={p.cover}
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+                preload="metadata"
+                aria-label={`${p.title} launch video`}
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            ) : (
+              <Image src={p.cover} alt={`${p.title} cover`} fill priority sizes="(min-width: 1100px) 1100px, 100vw" className="object-contain" />
+            )}
           </div>
         )}
 
         <div className="grid gap-8 lg:grid-cols-[1fr_300px]">
           <div>
             <h2 className="text-[10px] font-bold tracking-[0.18em] uppercase text-[#6e6e6e] mb-3">Overview</h2>
-            <p className="text-[15px] leading-relaxed text-[#374151] font-['Inter',system-ui,sans-serif]">{p.summary}</p>
+            <p className={`text-[15px] leading-relaxed text-[#374151]`}><Highlighted text={p.summary} keywords={p.keywords} /></p>
+
+            {p.gallery && p.gallery.length > 0 && (
+              <div className="mt-8">
+                <ProjectGallery items={p.gallery} title={p.title} />
+              </div>
+            )}
 
             <h2 className="mt-10 mb-3 text-[10px] font-bold tracking-[0.18em] uppercase text-[#6e6e6e]">Highlights</h2>
             <ul className="border-t border-[#0B1220]">
@@ -87,7 +112,7 @@ export default function ProjectPage({ params }: { params: Params }) {
                   <span className="text-[11px] font-bold tracking-widest text-[#E07A5F]">{String(idx + 1).padStart(2, '0')}</span>
                   <div>
                     <h3 className="text-[13px] font-bold uppercase tracking-wide">{h.title}</h3>
-                    <p className="mt-1 text-[13px] leading-relaxed text-[#374151] font-['Inter',system-ui,sans-serif]">{h.body}</p>
+                    <p className={`mt-1 text-[13px] leading-relaxed text-[#374151]`}><Highlighted text={h.body} keywords={p.keywords} /></p>
                   </div>
                 </li>
               ))}
@@ -115,6 +140,7 @@ export default function ProjectPage({ params }: { params: Params }) {
                 </dd>
               </div>
             </dl>
+            {repoFromUrl(p.link) && <GitHubStats repo={repoFromUrl(p.link)!} />}
             {p.link && (
               <a
                 href={p.link}

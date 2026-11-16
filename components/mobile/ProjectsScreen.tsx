@@ -13,8 +13,12 @@ export function ProjectCard({ p }: { p: Project }) {
   const body = (
     <>
       {p.cover && (
-        <div className="relative aspect-[1983/793] w-full border-b border-[#0B1220] bg-[#0f0f0f]">
-          <Image src={p.cover} alt={`${p.title} cover`} fill sizes="(max-width: 768px) 100vw, 400px" className="object-cover" />
+        <div className="relative w-full overflow-hidden border-b border-[#0B1220] bg-[#0f0f0f]" style={{ aspectRatio: p.coverRatio ?? 1983 / 793, background: p.coverBg }}>
+          {p.coverVideo ? (
+            <video src={p.coverVideo} poster={p.cover} autoPlay muted loop playsInline preload="metadata" aria-label={`${p.title} launch video`} className="absolute inset-0 h-full w-full object-cover" />
+          ) : (
+            <Image src={p.cover} alt={`${p.title} cover`} fill sizes="(max-width: 768px) 100vw, 400px" className="object-cover" />
+          )}
         </div>
       )}
       {!p.cover && <div className="relative w-[92px] shrink-0 self-start aspect-square border border-[#0B1220]" style={{ background: p.tint }}>
@@ -25,7 +29,7 @@ export function ProjectCard({ p }: { p: Project }) {
       </div>}
       <div className={`min-w-0 flex-1 pb-6 ${p.cover ? 'p-3 pb-9' : ''}`}>
         <div className="flex items-start justify-between gap-2">
-          <h3 className="text-[15px] font-bold leading-tight">
+          <h3 className={`text-[15px] font-bold leading-tight`}>
             <span className="mr-1.5 text-[10px] font-bold tracking-widest text-[#E07A5F]">{p.n}</span>
             {p.title}
           </h3>

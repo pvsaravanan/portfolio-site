@@ -96,11 +96,11 @@ export default function Projects() {
                       </span>
                     </div>
 
-                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold uppercase tracking-tight leading-[1.05] text-[#0B1220] mb-2 sm:mb-3">
+                    <h3 className={`text-xl sm:text-2xl lg:text-3xl font-extrabold uppercase tracking-tight leading-[1.05] text-[#0B1220] mb-2 sm:mb-3`}>
                       {project.title.toUpperCase()}
                     </h3>
 
-                    <p className="text-[14px] text-[#374151] leading-relaxed mb-3 sm:mb-4 max-w-md text-justify font-['Inter',system-ui,sans-serif]">
+                    <p className="text-[14px] text-[#374151] leading-relaxed mb-3 sm:mb-4 max-w-md text-justify">
                       {project.desc}
                     </p>
 

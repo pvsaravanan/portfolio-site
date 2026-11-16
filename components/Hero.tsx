@@ -98,7 +98,7 @@ export default function Hero() {
               </div>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter leading-[0.95] sm:leading-[0.9] mb-4 sm:mb-6 text-[#0B1220] max-w-2xl">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-normal leading-[0.95] sm:leading-[0.9] mb-4 sm:mb-6 text-[#0B1220] max-w-2xl">
               BUILDING SCALABLE
               <br />
               <span className="inline-block bg-[#E07A5F] text-white px-3 py-1 mt-2">

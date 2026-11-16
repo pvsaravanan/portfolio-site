@@ -8,7 +8,9 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        mono: ['"Roboto Mono"', '"IBM Plex Mono"', 'ui-monospace', 'Menlo', 'monospace'],
+        sans: ['var(--font-jakarta)', 'system-ui', 'sans-serif'],
+        // The site no longer uses a monospace face; `font-mono` maps to the same family.
+        mono: ['var(--font-jakarta)', 'system-ui', 'sans-serif'],
       },
       colors: {
         cream: '#F5F1E8',
